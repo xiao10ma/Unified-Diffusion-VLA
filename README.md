@@ -17,7 +17,7 @@
 ² MiLab, Westlake University  <br> 
 ³ Zhejiang University  
 
-\* Equal Contribution  † Project leader ‡ Corresponding Author 
+\* Equal Contribution  † Project leader  ‡ Corresponding Author 
 
 
 ## List
