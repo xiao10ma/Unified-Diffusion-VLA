@@ -9,6 +9,11 @@
 <a href="https://huggingface.co/chenpyyy/UD-VLA_CALVIN_ABCD_D" target="_blank">
     <img alt="HF Model" src="https://img.shields.io/badge/Model-ffd400?logo=huggingface&label=UD-VLA" height="25" />
 </a>
+<a href="https://github.com/OpenHelix-Team/UD-VLA/issues/1" target="_blank">
+    <img alt="Wechat" src="(https://img.shields.io/badge/Wechat-green?logo=wechat&label=UD-VLA" height="25" />
+</a>
+
+
 <br>
 
  **Jiayi Chen¹\***,**Wenxuan Song¹\***, **Pengxiang Ding²˒³**, **Ziyang Zhou¹**, **Han Zhao²˒³**, **Feilong Tang⁴**,**Donglin Wang²**,  **Haoang Li¹†**
