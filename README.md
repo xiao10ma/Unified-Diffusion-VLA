@@ -10,7 +10,7 @@
     <img alt="HF Model" src="https://img.shields.io/badge/Model-ffd400?logo=huggingface&label=UD-VLA" height="25" />
 </a>
 <a href="https://github.com/OpenHelix-Team/UD-VLA/issues/1" target="_blank">
-    <img alt="Wechat" src="(https://img.shields.io/badge/Wechat-green?logo=wechat&label=UD-VLA" height="25" />
+    <img alt="Wechat" src="https://img.shields.io/badge/Wechat-green?logo=wechat&label=UD-VLA" height="25" />
 </a>
 
 
