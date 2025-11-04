@@ -232,7 +232,7 @@ python tools/evaluation/calvin_score.py
     <tr><td>Robo-Flamingo</td><td>ABCD→D</td><td>0.964</td><td>0.896</td><td>0.824</td><td>0.740</td><td>0.660</td><td>4.09</td></tr>
     <tr><td>GR-1</td><td>ABCD→D</td><td>0.949</td><td>0.896</td><td>0.844</td><td>0.789</td><td>0.731</td><td>4.21</td></tr>
     <tr><td>ReconVLA</td><td>ABCD→D</td><td>0.980</td><td>0.900</td><td>0.845</td><td>0.785</td><td>0.705</td><td>4.23</td></tr>
-    <tr><td>UniVLA*</td><td>ABCD→D</td><td>0.958</td><td>0.918</td><td>0.874</td><td>0.846</td><td>0.702</td><td>4.24</td></tr>
+    <tr><td>UniVLA*</td><td>ABCD→D</td><td>0.948</td><td>0.906</td><td>0.862</td><td>0.834</td><td>0.690</td><td>4.24</td></tr>
     <tr><td>UP-VLA</td><td>ABCD→D</td><td>0.962</td><td>0.921</td><td>0.879</td><td>0.842</td><td>0.812</td><td>4.42</td></tr>
     <tr><td><b>UD-VLA (ours)</b></td><td>ABCD→D</td><td><b>0.992</b></td><td><b>0.968</b></td><td><b>0.936</b></td><td><b>0.904</b></td><td><b>0.840</b></td><td><b>4.64</b></td></tr>
   </tbody>
