@@ -1,6 +1,6 @@
 # Unified Diffusion VLA: Vision-Language-Action Model via Joint Discrete Denoising Diffusion Process
 
-<a href="https://arxiv.org/abs/2506.13725" target="_blank">
+<a href="https://arxiv.org/abs/2511.01718" target="_blank">
     <img alt="arXiv" src="https://img.shields.io/badge/arxiv-red?logo=arxiv&label=UD-VLA" height="25" />
 </a>
 <a href="https://irpn-eai.github.io/UD-VLA.github.io/" target="_blank">
@@ -259,6 +259,6 @@ If you find UD-VLA useful, please consider citing our work🤗:
 title={Unified Diffusion VLA: Vision-Language-Action Model via Joint Discrete Denoising Diffusion Process},
 author={Jiayi Chen, Wenxuan Song, Pengxiang Ding, Ziyang Zhou, Han Zhao, Feilong Tang, Donglin Wang, Haoang Li},
 year={2025},
-url={https://arxiv.org/abs/}
+journal={arXiv preprint arXiv:2511.01718}
 }
 ```

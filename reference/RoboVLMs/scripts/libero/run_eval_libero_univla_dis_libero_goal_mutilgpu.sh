@@ -11,8 +11,7 @@ module load cuda/12.1
 # echo "total workers: ${ARNOLD_WORKER_NUM}"
 # echo "cur worker id: ${ARNOLD_ID}"
 # echo "gpus per worker: ${ARNOLD_WORKER_GPU}"
-# ckpt_dir="/data/user/wsong890/user68/project/UniVLA/logs/UNIVLA_LIBERO_VIDEO_BS48_24k_mi_0912/checkpoint-24000"
-# ckpt_dir="/data/user/wsong890/user68/project/UniVLA/logs/libero10/train/UNIVLA_LIBERO_10_VIDEO_BS48_24k_mi_0926/checkpoint-24000"
+
 ckpt_dir="/data/user/wsong890/user68/project/UniVLA/logs/libero/train/UNIVLA_LIBERO_VIDEO_BS64_32k_mi_w80_1004/checkpoint-32000"
 steps=72
 TIMESTAMP=$(date +%Y%m%d%H%M)

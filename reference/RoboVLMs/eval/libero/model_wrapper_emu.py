@@ -420,11 +420,11 @@ class EmuVLAModel_i_ia_dis(EmuVLAModel):
             # print("use video_mode")
             self.add_image(pos_inputs)
             
-            # 获取历史图像和动作
+            #
             history = self.get_history()
             action_history = self.get_action_history()
 
-            # 初始化输入ID、token类型ID和attention mask
+            #
             all_input_ids = []
             all_token_type_ids = []
             all_attention_mask = []
@@ -437,11 +437,11 @@ class EmuVLAModel_i_ia_dis(EmuVLAModel):
             # 遍历历史图像
             for i in range(len(history)):
                 # print("len(history):",len(history))
-                img_input_ids = history[i]['input_ids']#自带boa
+                img_input_ids = history[i]['input_ids']#
                 # print("img_input_ids.shape:", img_input_ids.shape)
                 img_token_type_ids = history[i]['token_type_ids']
                 img_attention_mask = history[i]['attention_mask']
-                if i==0 :#i2ia 第一个i不需要添加boa_token在最后
+                if i==0 :#i2ia 
                     img_input_ids=img_input_ids[:,:-1]
                     img_token_type_ids=img_token_type_ids[:,:-1]
                     img_attention_mask=img_attention_mask[:,:-1]
@@ -452,9 +452,9 @@ class EmuVLAModel_i_ia_dis(EmuVLAModel):
                     # print("len(action_history):",len(action_history))
                     # print("action_history[i-1]:",action_history[i-1])
                     act_input_ids = action_history[i-1]
-                    # 用self.mask_token_id pad到max_action_len 
+                    # 
                     act_input_ids = torch.cat([act_input_ids, torch.full((1, self.max_action_len-1 - act_input_ids.shape[1]), self.mask_token_id, dtype=act_input_ids.dtype, device=act_input_ids.device)], dim=1)
-                    # 动作的token_type_ids和attention_mask分别填充为全0和全1
+                    # 
                     act_token_type_ids = torch.zeros_like(act_input_ids)
                     act_attention_mask = torch.ones_like(act_input_ids)
                     
@@ -470,7 +470,7 @@ class EmuVLAModel_i_ia_dis(EmuVLAModel):
             # all_input_ids.append(img_input_ids)
             # all_token_type_ids.append(img_token_type_ids)
             # all_attention_mask.append(img_attention_mask)
-            # 拼接所有的input_ids、token_type_ids和attention_mask
+            # 
             concatenated_input_ids = torch.cat(all_input_ids, dim=1)
             concatenated_token_type_ids = torch.cat(all_token_type_ids, dim=1)
             concatenated_attention_mask = torch.cat(all_attention_mask, dim=1)
