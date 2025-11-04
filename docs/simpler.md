@@ -48,10 +48,11 @@ You can fit the FAST tokenizer on the corresponding dataset. Also, you can adjus
 ```shell
 python tools/action_tokenizer/fit_fast.py
 ```
-
+### Train discrete diffusion model
 ```shell
 bash scripts/simulator/simplerenv/train_simplerenv_bridge_video_bid_mi.sh
 ```
+> On the already post-trained [world model](https://huggingface.co/Yuqi1997/UniVLA/tree/main/WORLD_MODEL_POSTTRAIN), perform additional Bridge-specific post-training, and then fine-tune it to discrete diffusion model.
 
 ## Model Evaluation
 ```shell
