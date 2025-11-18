@@ -14,7 +14,7 @@
     <img alt="Wechat" src="https://img.shields.io/badge/Wechat-green?logo=wechat&label=UD-VLA" height="25" />
 </a> -->
 
-
+<!--
 <br>
 
  **Jiayi Chen¹\***,**Wenxuan Song¹†\***, **Pengxiang Ding²˒³**, **Ziyang Zhou¹**, **Han Zhao²˒³**, **Feilong Tang⁴**,**Donglin Wang²**,  **Haoang Li¹‡**
@@ -24,7 +24,9 @@
 ³ Zhejiang University  <br> 
 ⁴ Monash University
 
-\* Equal Contribution  † Project leader  ‡ Corresponding Author 
+\* Equal Contribution  † Project leader  ‡ Corresponding Author -->
+
+**The first open-sourced diffusion vision-langauge-action model.**
 
 <hr style="border: 2px solid gray;"></hr>
 
