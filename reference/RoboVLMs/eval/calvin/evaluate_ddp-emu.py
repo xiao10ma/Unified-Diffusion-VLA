@@ -57,7 +57,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 from eval_utils import print_and_save
 from model_wrapper_emu import EmuVLAModel,EmuVLAModel_i_ia,EmuVLAModel_i_aia
 from model_wrapper_emu_dis import EmuVLAModel_i_ia_dis,EmuVLAModel_i_ia_dis_2stage
-from model_wrapper_emu_dis_kv import EmuVLAModel_i_ia_dis_kv
+# from model_wrapper_emu_dis_kv import EmuVLAModel_i_ia_dis_kv
 logger = logging.getLogger(__name__)
 
 
