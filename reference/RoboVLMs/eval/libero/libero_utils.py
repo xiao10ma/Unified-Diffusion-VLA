@@ -6,6 +6,7 @@ import sys
 import numpy as np
 # This requires to download LIBERO repo
 # sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference/RoboVLMs/LIBERO")
+from pathlib import Path
 sys.path.append(str(Path(__file__).absolute().parents[2] / "LIBERO"))
 from libero.libero import get_libero_path
 from libero.libero.envs import OffScreenRenderEnv

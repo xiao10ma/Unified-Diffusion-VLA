@@ -9,6 +9,7 @@ from transformers.feature_extraction_utils import BatchFeature
 from transformers.generation import LogitsProcessorList, PrefixConstrainedLogitsProcessor, UnbatchedClassifierFreeGuidanceLogitsProcessor
 import sys
 # sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference/Emu3")
+from pathlib import Path
 sys.path.append(str(Path(__file__).absolute().parents[3] / "Emu3"))
 from emu3.mllm import Emu3Tokenizer, Emu3ForCausalLM, Emu3Processor
 from emu3.mllm import Emu3MoE

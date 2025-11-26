@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 from torch.nn.functional import cross_entropy
 from random import shuffle
 import random
-
+from pathlib import Path
 sys.path.append("/share/project/yuqi.wang/UniVLA/reference/Emu3")
 from emu3.mllm.processing_emu3 import Emu3Processor
 from emu3.mllm import Emu3Config, Emu3Tokenizer, Emu3ForCausalLM

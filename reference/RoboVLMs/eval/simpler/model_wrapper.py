@@ -11,7 +11,7 @@ from pathlib import Path
 import time
 import sys
 sys.path.insert(0, Path(__file__).absolute().parents[2].as_posix())
-import sys
+# import sys
 # sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference")
 sys.path.append(str(Path(__file__).absolute().parents[4] / "reference"))
 sys.path.append(str(Path(__file__).absolute().parents[4] / "reference/Emu3"))
