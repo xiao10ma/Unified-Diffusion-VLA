@@ -7,7 +7,7 @@ import pathlib
 import transformers as tf
 from datasets import Emu3SFTDataset
 import sys
-sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference/Emu3")
+sys.path.append("./reference/Emu3")
 from emu3.mllm import Emu3Config, Emu3Tokenizer, Emu3ForCausalLM, Emu3MoE, Emu3MoEConfig
 from transformers import AutoModel,Trainer
 from datasets import Emu3WorldModelDataset,Emu3SFTDatasetI2IA,Emu3SFTDataset,Emu3SFTDatasetI2IA_mi

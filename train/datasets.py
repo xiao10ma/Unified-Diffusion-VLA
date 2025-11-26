@@ -10,7 +10,7 @@ from typing import List, Union
 from torch.utils.data import Dataset
 from PIL import Image
 import sys
-sys.path.append("/data/user/wsong890/user68/project/UniVLA")
+sys.path.append("./")
 from models.tokenizer.action_tokenizer import ActionTokenizer
 from transformers import AutoModel, AutoImageProcessor, GenerationConfig, AutoProcessor
 from reference.Emu3.emu3.sampling import get_mask_chedule

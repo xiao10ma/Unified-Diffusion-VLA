@@ -113,7 +113,7 @@ def evaluate_policy(
 ):
     """Run this function to evaluate a model on the CALVIN challenge."""
     ### hard code the conf_dir
-    conf_dir = Path("/data/user/wsong890/user68/project/UniVLA/reference/RoboVLMs/calvin/calvin_models") / "conf"
+    conf_dir = Path("./calvin/calvin_models") / "conf"
     ### 
 
     task_cfg = OmegaConf.load(
@@ -447,7 +447,7 @@ def parser_args():
     parser.add_argument("--raw_calvin", action="store_true")
     parser.add_argument("--debug_model", action="store_true")
     parser.add_argument("--diverse_inst", action="store_true")
-    parser.add_argument("--CACHE_ROOT", type=str, default='/data/user/wsong890/user68/project/UniVLA/logs/calvin_exp_main/univla_calvin_abcd_video')
+    parser.add_argument("--CACHE_ROOT", type=str, default='./logs/calvin_exp_main/univla_calvin_abcd_video')
     parser.add_argument("--evla_i2ia", action="store_true")
     parser.add_argument("--evla_i2aia", action="store_true")
     parser.add_argument("--use_jacobi_generate", action="store_true")

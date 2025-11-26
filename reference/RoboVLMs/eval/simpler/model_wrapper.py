@@ -12,7 +12,9 @@ import time
 import sys
 sys.path.insert(0, Path(__file__).absolute().parents[2].as_posix())
 import sys
-sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference")
+# sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference")
+sys.path.append(str(Path(__file__).absolute().parents[4] / "reference"))
+sys.path.append(str(Path(__file__).absolute().parents[4] / "reference/Emu3"))
 # from robovlms.train.base_trainer import BaseTrainer
 from RoboVLMs.eval.calvin.model_wrapper import CustomModel
 from queue import Queue
@@ -23,7 +25,7 @@ from transformers import AutoModel, AutoImageProcessor, GenerationConfig, AutoPr
 from transformers.feature_extraction_utils import BatchFeature
 from transformers.generation import LogitsProcessorList, PrefixConstrainedLogitsProcessor, UnbatchedClassifierFreeGuidanceLogitsProcessor
 import sys
-sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference/Emu3")
+# sys.path.append("/data/user/wsong890/user68/project/UniVLA/reference/Emu3")
 from emu3.mllm import Emu3Tokenizer, Emu3ForCausalLM, Emu3Processor
 from emu3.mllm import Emu3MoE
 from transformers import LogitsProcessor

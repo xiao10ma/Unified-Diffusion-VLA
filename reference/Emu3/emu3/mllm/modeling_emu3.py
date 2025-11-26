@@ -59,7 +59,7 @@ if is_flash_attn_2_available():
     from flash_attn.bert_padding import index_first_axis, pad_input, unpad_input  # noqa
 
 import sys
-sys.path.append("/data/user/wsong890/user68/project/UniVLA")
+# sys.path.append("/data/user/wsong890/user68/project/UniVLA")
 sys.path.insert(0, Path(__file__).absolute().parents[4].as_posix())
 from models.policy_head.noise_schedulers import FlowMatchingScheduler
 import random

@@ -6,8 +6,8 @@ MASTER_PORT=${MASTER_PORT:-23456}
 NGPUS=4
 MODEL_PATH="logs/ckpts/WORLD_MODEL_POSTTRAIN"
 # MODEL_PATH="/data/user/wsong890/user68/project/UniVLA/pretrain/UniVLA/Emu3-Stage1"
-DATAPATH='/share/user/iperror/data/univla/processed_data/meta/calvin_abcd_norm.pkl'
-ACTION_TOKENIZER_PATH="/data/user/wsong890/user68/project/UniVLA/pretrain/fast_calvin_abcd_a10_s50"
+DATAPATH='/<your_path>/processed_data/meta/calvin_abcd_norm.pkl'
+ACTION_TOKENIZER_PATH="./pretrain/fast_calvin_abcd_a10_s50"
 # EXP_NAME="UNIVLA_CALVIN_ABCD_VIDEO_BS192_8k"
 EXP_NAME="UNIVLA_CALVIN_ABCD_VIDEO_BS64_24k_I2IA_mi_0915"
 
