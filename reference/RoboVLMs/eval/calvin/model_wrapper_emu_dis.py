@@ -174,9 +174,9 @@ class EmuVLAModel:
 
         # fast tokenization
         if self.normalize_action:
-            fast_path = '/data/user/wsong890/user68/project/UniVLA/pretrain/fast_calvin_abcd_a10_s50'
+            fast_path = '/data/user/wsong890/user68/cjy/Unified-Diffusion-VLA/pretrain/fast_calvin_abcd_a10_s50'
         else:
-            fast_path = "/data/user/wsong890/user68/project/UniVLA/pretrain/fast_calvin_abcd_a10_s50"
+            fast_path = "/data/user/wsong890/user68/cjy/Unified-Diffusion-VLA/pretrain/fast_calvin_abcd_a10_s50"
 
         self.action_tokenizer = AutoProcessor.from_pretrained(fast_path, trust_remote_code=True)
 

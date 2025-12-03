@@ -429,7 +429,7 @@ def parser_args():
     # default dataset path
     parser.add_argument(
         "--dataset_path",
-        default="/share/user/iperror/data/task_ABCD_D",
+        default="/data/user/wsong890/user68/data/task_ABCD_D",
         type=str,
         help="Path to the dataset root directory.",
     )
@@ -440,8 +440,8 @@ def parser_args():
     )
 
     parser.add_argument("--emu_hub", type=str, default="")
-    parser.add_argument("--vq_hub", type=str, default="/share/user/iperror/data/univla/UniVLA/Emu3-Stage1")
-    parser.add_argument("--vision_hub", type=str, default="/share/user/iperror/data/univla/UniVLA/Emu3-VisionTokenizer")
+    parser.add_argument("--vq_hub", type=str, default="/data/user/wsong890/user68/project/UniVLA/pretrain/model/model/Emu3-Stage1")
+    parser.add_argument("--vision_hub", type=str, default="/data/user/wsong890/user68/project/UniVLA/pretrain/model/model/Emu3-VisionTokenizer")
     parser.add_argument("--device_id", default=0, type=int, help="CUDA device")
     parser.add_argument("--no_cache", action="store_true")
     parser.add_argument("--raw_calvin", action="store_true")
@@ -522,16 +522,6 @@ def main():
             use_jacobi_generate=args.use_jacobi_generate,
             action_steps=args.action_steps,
             image_steps=args.image_steps,
-            steps=args.steps
-        )
-    elif args.dis_i2a_kv:
-        model = EmuVLAModel_i_ia_dis_kv(
-            emu_hub=args.emu_hub,
-            vq_hub=args.vq_hub,
-            vision_hub=args.vision_hub,
-            device=torch.device("cuda"),
-            raw_calvin=args.raw_calvin,
-            use_jacobi_generate=args.use_jacobi_generate,
             steps=args.steps
         )
     else: #iai2a  

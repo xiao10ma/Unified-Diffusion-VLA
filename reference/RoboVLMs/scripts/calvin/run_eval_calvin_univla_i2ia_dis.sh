@@ -13,16 +13,15 @@ unset DISPLAY
 export PYOPENGL_PLATFORM=egl
 # export EGL_DEVICE_ID=0
 # emu_hub=$1
-
-emu_hub="chenpyyy/UD-VLA_CALVIN-ABCD" 
+emu_hub="chenpyyy/UD-VLA_CALVIN_ABCD_D"
+# emu_hub="/data/user/wsong890/user68/project/UniVLA/logs/UNIVLA_CALVIN_ABCD_VIDEO_BS64_24k_I2IA_mi_0905/checkpoint-24000" 
 
 # export CUDA_VISIBLE_DEVICES=1
 GPUS_PER_NODE=4
 
 torchrun --nnodes=1 --nproc_per_node=$GPUS_PER_NODE --master_port=6099 eval/calvin/evaluate_ddp-emu.py \
 --emu_hub $emu_hub \
---use_jacobi_generate \
 --dis_i2a \
 --steps 72 \
---CACHE_ROOT /data/user/wsong890/user68/project/UniVLA/logs/calvin_exp_main/univla_calvin_abcd_video_i2ia_dis \
+--CACHE_ROOT /data/user/wsong890/user68/project/UniVLA/logs/calvin_exp_main/univla_calvin_abcd_video_i2ia_dis
 # --debug \

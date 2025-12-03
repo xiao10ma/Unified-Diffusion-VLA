@@ -15,16 +15,19 @@ git clone --recurse-submodules https://github.com/mees/calvin.git
 
 CALVIN_ROOT=$(pwd)/calvin
 cd ${CALVIN_ROOT}
-sed -i '11d' calvin_models/requirements.txt
-sed -i '12d' calvin_models/requirements.txt
-sed -i '13d' calvin_models/requirements.txt
+# sed -i '11d' calvin_models/requirements.txt
+# sed -i '12d' calvin_models/requirements.txt
+# sed -i '13d' calvin_models/requirements.txt
+# sed -i '14d' calvin_models/requirements.txt
 sed -i '14d' calvin_models/requirements.txt
+sed -i '13d' calvin_models/requirements.txt
+
 
 sh install.sh
 
 # CALVIN spesicifcally requires the following version of numpy
-pip install numpy==1.21.0
-
+# pip install numpy==1.24.0
+# pip install numpy==1.21.0
 # Download dataset
 cd ${CALVIN_ROOT}/dataset
 # sh download_data.sh debug

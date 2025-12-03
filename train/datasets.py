@@ -1052,14 +1052,14 @@ class Emu3SFTDatasetI2IA_mi(Emu3SFTDataset):
             labels = torch.full((self.tokenizer.model_max_length,), fill_value=-100, dtype=torch.long)
             
             # padding: -1, text: 0, image/action: cur_level
-            token_levels = torch.full((self.tokenizer.model_max_length,), fill_value=-1, dtype=torch.long)
-            cur_level = 0
-            cur_idx = 0
+            # token_levels = torch.full((self.tokenizer.model_max_length,), fill_value=-1, dtype=torch.long)
+            # cur_level = 0
+            # cur_idx = 0
             
-            text_end = len(sample_input_ids)
-            token_levels[cur_idx:text_end] = cur_level
-            cur_level += 1
-            cur_idx = text_end
+            # text_end = len(sample_input_ids)
+            # token_levels[cur_idx:text_end] = cur_level
+            # cur_level += 1
+            # cur_idx = text_end
             
             # first image
             image_prompt = self.format_video_prompt(image_tokens[0:1])
@@ -1077,9 +1077,9 @@ class Emu3SFTDatasetI2IA_mi(Emu3SFTDataset):
                 gripper_tokens=gripper_tokens[1:]
             # ratio=random.choice(self.mask_ratios_list)
             
-            token_levels[cur_idx:len(sample_input_ids)] = cur_level
-            cur_level += 1
-            cur_idx = len(sample_input_ids)
+            # token_levels[cur_idx:len(sample_input_ids)] = cur_level
+            # cur_level += 1
+            # cur_idx = len(sample_input_ids)
             
             for i in range(len(image_tokens)):
                 image_prompt = self.format_video_prompt(image_tokens[i:i+1])
@@ -1106,9 +1106,9 @@ class Emu3SFTDatasetI2IA_mi(Emu3SFTDataset):
                         )
                     # print("masked_image_input_ids.shape:", masked_image_input_ids.shape)
               
-                token_levels[cur_idx:cur_idx+len(masked_image_input_ids)] = cur_level
-                cur_level += 1
-                cur_idx += len(masked_image_input_ids)
+                # token_levels[cur_idx:cur_idx+len(masked_image_input_ids)] = cur_level
+                # cur_level += 1
+                # cur_idx += len(masked_image_input_ids)
               
                 if self.actions:
                     if self.actions_format == "fast":
@@ -1145,9 +1145,9 @@ class Emu3SFTDatasetI2IA_mi(Emu3SFTDataset):
                             labels[action_start-len(masked_image_input_ids):action_start] = masked_labels
                             labels[action_start:action_end] = masked_action_labels
                             
-                        token_levels[cur_idx:action_end] = cur_level
-                        cur_level += 1
-                        cur_idx = action_end
+                        # token_levels[cur_idx:action_end] = cur_level
+                        # cur_level += 1
+                        # cur_idx = action_end
                 else:
                     sample_input_ids = torch.cat([sample_input_ids, masked_image_input_ids], dim=-1)
                     sample_attention_mask = torch.cat([sample_attention_mask, image_attention_mask], dim=-1)
@@ -1161,7 +1161,7 @@ class Emu3SFTDatasetI2IA_mi(Emu3SFTDataset):
             sample = self.tokenizer.pad(
                     {
                         "input_ids": sample_input_ids,
-                        "token_levels": token_levels,
+                        # "token_levels": token_levels,
                         "attention_mask": sample_attention_mask,
                         "labels": labels
                     },
@@ -1180,205 +1180,3 @@ class Emu3SFTDatasetI2IA_mi(Emu3SFTDataset):
             # print("sample_attention_mask", sample_attention_mask.shape)
             # print("labels", labels)
         return sample
-
-    # def __getitem__(self, index: int):
-
-    #         scene = self.data[index]
-    #         # print("scene", scene)
-    #         if self.cfg:
-    #             p_prob = random.random()
-    #             if p_prob < self.args.null_prompt_prob:
-    #                 prompt = ""
-    #             else:
-    #                 prompt = scene["text"]
-    #         else:
-    #             prompt = scene["text"]
-
-    #         image_tokens_path = scene["image"]
-    #         # print("len(image_tokens_path)", len(image_tokens_path))
-    #         # handle different dataset fps for post training
-    #         fps = self.get_fps_for_path(image_tokens_path)
-    #         if fps is not None:
-    #             self.action_frames = fps #10
-            
-    #         if self.T > 1 and self.video_format == "interleave":
-    #             if len(image_tokens_path) > self.T * self.action_frames:
-    #                 # frames_num = self.T * self.action_frames#20
-    #                 frames_num = (self.T-1) * self.action_frames+1#11
-    #                 # print("frames_num", frames_num)
-    #             else:
-    #                 frames_num = (len(image_tokens_path) // self.action_frames) * self.action_frames
-    #         else:
-    #             frames_num = self.action_frames if len(image_tokens_path) >= self.action_frames else len(image_tokens_path)
-            
-    #         # use action information
-    #         if self.actions:
-    #             action = scene["action"] 
-    #             if self.use_gripper:
-    #                 gripper = scene["gripper_image"]
-    #                 image_tokens, action_tokens, gripper_tokens = self.random_frames_to_tensor(image_tokens_path, frames_num, action_prompt=action, gripper=gripper)
-    #                 # print("image_tokens.shape:", image_tokens.shape)
-    #                 # print("action_tokens.shape:", action_tokens.shape)
-    #                 # print("gripper_tokens.shape:", gripper_tokens.shape)
-    #             else:
-    #                 image_tokens, action_tokens = self.random_frames_to_tensor(image_tokens_path, frames_num, action_prompt=action)
-                
-    #             if self.video_format == "interleave":
-    #                 if self.actions_format == "fast":
-    #                     # print("action_tokens.shape:", action_tokens.shape)
-    #                     if isinstance(action_tokens, list):
-    #                         tensor_list = [torch.tensor(item).unsqueeze(0) for item in action_tokens]
-    #                         # Concatenate tensors along the first dimension
-    #                         action_tokens = torch.cat(tensor_list, dim=0)#
-    #                     action_tokens = action_tokens.reshape(-1, self.action_frames, action_tokens.shape[-1])#(2,10,7)
-    #                     # print("action_tokens.shape:", action_tokens.shape)
-    #                     action_ids = self.action_tokenizer(action_tokens)
-    #                     # print("len(action_ids):", len(action_ids))
-    #                     # print("len(action_ids[0]):", len(action_ids[0]))
-    #                     self.last_vocab_idx = self.tokenizer.pad_token_id - 1
-    #                     action_ids = [self.last_vocab_idx - torch.tensor(id) for id in action_ids]
-    #                     # print("self.last_vocab_idx:", self.last_vocab_idx)
-    #                     # print("len(action_tokens):", len(action_tokens))
-    #                     # print("action_ids:", action_ids)
-
-    #                 else:
-    #                     raise ValueError(f"Invalid actions_format: {self.actions_format}")
-    #             else:
-    #                 if self.actions_format == "openvla":
-    #                     action_tokens = action_tokens.flatten()
-    #                     action_ids = self.action_tokenizer(action_tokens)
-
-    #                     # Debugging
-    #                     # action_debug = self.action_tokenizer.decode_token_ids_to_actions(action_ids)
-    #                     # error = action_tokens - action_debug
-    #                 elif self.actions_format == "text":
-    #                     action_str = "\n".join(",".join(f"{num:.2f}" for num in row) for row in action_tokens)
-    #                     action_prompt = self.act_template.format(action_prompt=action_str)
-    #                 elif self.actions_format == "continuous":
-    #                     action_continuous = action_tokens
-    #                 elif self.actions_format == "fast":
-    #                     if isinstance(action_tokens, list):
-    #                         tensor_list = [torch.tensor(item).unsqueeze(0) for item in action_tokens]
-    #                         # Concatenate tensors along the first dimension
-    #                         action_tokens = torch.cat(tensor_list, dim=0)
-    #                     action_ids = self.action_tokenizer(action_tokens)[0]
-    #                     # action_decode = self.action_tokenizer.decode([action_ids])
-    #                     self.last_vocab_idx = self.tokenizer.pad_token_id - 1#最大词汇表减1
-    #                     action_ids = [self.last_vocab_idx - id for id in action_ids]
-    #                 else:
-    #                     raise ValueError(f"Invalid actions_format: {self.actions_format}")
-    #         else:
-    #             if self.use_gripper:
-    #                 gripper = scene["gripper_image"]
-    #                 image_tokens, gripper_tokens = self.random_frames_to_tensor(image_tokens_path, frames_num, gripper=gripper)
-    #                 # print("image_tokens.shape:", image_tokens.shape)
-    #                 # print("gripper_tokens.shape:", gripper_tokens.shape)
-    #             else:
-    #                 image_tokens = self.random_frames_to_tensor(image_tokens_path, frames_num) 
-    #         # video VLA
-    #         if self.video_format == "interleave":
-    #             # print("prompt:", prompt)
-    #             text_prompt = self.tokenizer.bos_token + prompt
-    #             # print("self.tokenizer.boi_token:", self.tokenizer.boi_token)
-    #             # print("self.tokenizer.eoi_token:", self.tokenizer.eoi_token)
-    #             # print("self.tokenizer.eof_token:", self.tokenizer.eof_token)
-    #             # print("self.tokenizer.img_token:", self.tokenizer.img_token)
-    #             # print("text_prompt:", text_prompt)
-    #             image_tokens = image_tokens[0::self.action_frames,...]
-    #             # print("image_tokens.shape:", image_tokens.shape)#(2,25,25)
-    #             if self.use_gripper:
-    #                 gripper_tokens = gripper_tokens[0::self.action_frames,...]
-                
-    #             sample_text = self.tokenizer(text_prompt, padding=False, return_token_type_ids=False, return_tensors="pt")
-    #             sample_input_ids = sample_text["input_ids"][0]
-    #             sample_attention_mask = sample_text["attention_mask"][0]
-    #             labels = torch.full((self.tokenizer.model_max_length,), fill_value=-100, dtype=torch.long)
-    #             # first image
-    #             image_prompt = self.format_video_prompt(image_tokens[0:1])
-    #             if self.use_gripper:
-    #                 gripper_prompt = self.format_video_prompt(gripper_tokens[0:1])
-    #                 image_prompt += gripper_prompt
-    #             sample_img = self.tokenizer(image_prompt, padding=False, return_token_type_ids=False, return_tensors="pt")
-    #             image_input_ids = sample_img["input_ids"][0]
-    #             image_attention_mask = sample_img["attention_mask"][0]
-    #             sample_input_ids = torch.cat([sample_input_ids, image_input_ids], dim=-1)
-    #             sample_attention_mask = torch.cat([sample_attention_mask, image_attention_mask], dim=-1)
-    #             # labels[len(sample_input_ids)-len(image_input_ids):len(sample_input_ids)] = image_input_ids
-    #             image_tokens=image_tokens[1:]
-    #             gripper_tokens=gripper_tokens[1:]
-    #             ratio=random.choice(self.mask_ratios_list)
-    #             for i in range(len(image_tokens)):
-    #                 image_prompt = self.format_video_prompt(image_tokens[i:i+1])
-    #                 # print("image_prompt:",image_prompt)
-    #                 if self.use_gripper:
-    #                     gripper_prompt = self.format_video_prompt(gripper_tokens[i:i+1])
-    #                     image_prompt += gripper_prompt
-    #                 sample_img = self.tokenizer(image_prompt, padding=False, return_token_type_ids=False, return_tensors="pt")
-    #                 image_input_ids = sample_img["input_ids"][0]
-    #                 image_attention_mask = sample_img["attention_mask"][0]
-    #                 # 随机 mask 掉其中 50% 的 token
-    #                 num_tokens = image_input_ids.size(0)
-    #                 num_mask = int(num_tokens * ratio)
-
-    #                 # 随机选取 mask 位置（不重复）
-    #                 mask_indices = torch.randperm(num_tokens)[:num_mask]
-
-    #                 # 创建 masked 版本的 input_ids 和 labels
-    #                 masked_image_input_ids = image_input_ids.clone()
-    #                 masked_labels = torch.full_like(image_input_ids, -100)
-
-    #                 # 替换为 mask token，并设置 label
-    #                 masked_image_input_ids[mask_indices] = self.tokenizer.mask_token_id  # 替换为 [MASK]
-    #                 masked_labels[mask_indices] = image_input_ids[mask_indices]          # 仅对 masked token 设置标签
-    #                 if self.actions:
-    #                     if self.actions_format == "fast":
-    #                         # print("len(action_ids):", len(action_ids))
-    #                         # print("action_ids[0].shape:", action_ids[0].shape)
-    #                         action_sample = self.wrap_action_sequence(action_ids[i].tolist()) 
-    #                         num_act_tokens = action_sample.size(0)
-    #                         num_act_mask = int(num_act_tokens * ratio)
-
-    #                         act_mask_indices = torch.randperm(num_act_tokens)[:num_act_mask]
-
-    #                         masked_action_sample = action_sample.clone()
-    #                         masked_action_labels = torch.full_like(action_sample, -100)
-
-    #                         # 替换为 mask token（注意：动作也用 [MASK] token）
-    #                         masked_action_sample[act_mask_indices] = self.tokenizer.mask_token_id
-    #                         masked_action_labels[act_mask_indices] = action_sample[act_mask_indices]
-    #                         # print("sample_input_ids:", sample_input_ids)
-    #                         # print("image_input_ids:", image_input_ids)
-    #                         # print("action_sample:", action_sample)
-    #                         sample_input_ids = torch.cat([sample_input_ids, masked_image_input_ids, masked_action_sample], dim=-1)  
-    #                         sample_attention_mask = torch.cat([sample_attention_mask, image_attention_mask, torch.ones_like(masked_action_sample, dtype=torch.long)], dim=-1) 
-    #                         action_start = len(sample_input_ids) - len(masked_action_sample)
-    #                         action_end = len(sample_input_ids)
-    #                         if self.args.apply_loss_on_only_action:  
-    #                             labels[action_start:action_end] = masked_action_labels
-    #                         else:  # Otherwise, fill both vision and action parts in the labels
-    #                             labels[action_start-len(masked_image_input_ids):action_start] = masked_labels
-    #                             labels[action_start:action_end] = masked_action_labels
-    #                 else:
-    #                     sample_input_ids = torch.cat([sample_input_ids, masked_image_input_ids], dim=-1)
-    #                     sample_attention_mask = torch.cat([sample_attention_mask, image_attention_mask], dim=-1)
-    #                     labels[len(sample_input_ids)-len(image_input_ids):len(sample_input_ids)] = masked_labels
-    #             # print("labels:", labels)
-    #             # print("sample_input_ids:", sample_input_ids)
-    #             sample = self.tokenizer.pad(
-    #                     {
-    #                         "input_ids": sample_input_ids,
-    #                         "attention_mask": sample_attention_mask,
-    #                         "labels": labels
-    #                     },
-    #                     padding="max_length",
-    #                     return_tensors="pt"
-    #                 )
-    #             for k, v in sample.items():
-    #                 sample[k] = v.squeeze(0)
-    #             # print("sample", sample)
-    #             torch.set_printoptions(threshold=2500)
-    #             # print("sample_input_ids", sample_input_ids.shape)
-    #             # print("sample_input_ids", sample_input_ids)
-    #             # print("sample_attention_mask", sample_attention_mask.shape)
-    #             # print("labels", labels)
-    #         return sample

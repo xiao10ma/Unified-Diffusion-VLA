@@ -30,7 +30,7 @@ def split_action_into_subsegments(action, T):
 tokenizer = AutoProcessor.from_pretrained("/data/user/wsong890/user68/project/UniVLA/pretrain/fast", trust_remote_code=True)
 
 # bridge_pickle = '/share/project/yuqi.wang/datasets/processed_data/meta/simplerenv_bridge_trainval.pkl'# calvin fixme
-calvin_pickle = '/data/user/wsong890/user68/project/UniVLA/real_data/meta/debug_real_data_norm.pkl'
+calvin_pickle = '/data/user/wsong890/user68/project/UniVLA/data/processed_data/meta/calvin_abcd_norm.pkl'
 with open(calvin_pickle, 'rb') as f:
     data = pickle.load(f)
 ##### configure the parameters
@@ -38,8 +38,7 @@ with open(calvin_pickle, 'rb') as f:
 T = 5
 scale = 50
 # save_path = '/share/project/yuqi.wang/UniVLA/pretrain/fast_bridge_t5_s50'
-# save_path = '/data/user/wsong890/user68/project/UniVLA/pretrain/fast_calvin_abcd_a10_s50'
-save_path = '/data/user/wsong890/user68/project/UniVLA/pretrain/fast_debug_real_data_t5_s50'
+save_path = '/data/user/wsong890/user68/project/UniVLA/pretrain/fast_calvin_abcd_a10_s50'
 #####
 all_subsegments = []
 for value in tqdm(data):
